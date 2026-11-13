@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: fastnet-relay
+    runtime: node
+    plan: free
+    region: virginia
+    buildCommand: npm ci --omit=dev
+    startCommand: node relay.js
+    healthCheckPath: /health
+    envVars:
+      - key: MAX_PLAYERS
+        value: "4"
