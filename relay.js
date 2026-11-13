@@ -35,7 +35,7 @@ function newPeerId(room) {
 }
 
 const server = http.createServer((req, res) => {
-  if (req.url === "/health") { res.writeHead(200, { "content-type": "application/json" }); return res.end(JSON.stringify({ ok: true, rooms: rooms.size })); }
+  if (req.url === "/health") { res.writeHead(200, { "content-type": "application/json", "access-control-allow-origin": "*", "cache-control": "no-store" }); return res.end(JSON.stringify({ ok: true, rooms: rooms.size })); }
   res.writeHead(200, { "content-type": "text/plain" }); res.end("fastnet relay\n");
 });
 const wss = new WebSocketServer({ server, maxPayload: 256 * 1024 });
